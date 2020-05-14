@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    restart: always
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+    volumes:
+      - .:/code
+
+  postgres:
+    image: "postgres"
+    volumes:
+      - africmode:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    restart: always
+
+
+volumes:
+  africmode:
+  images:
+
+
+
